@@ -1,4 +1,4 @@
-import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.logging.Level;
@@ -8,25 +8,25 @@ import javax.swing.JPanel;
 
 class Game extends JPanel implements Runnable {//implements runnable allows the use of a thread
 
+    private Font f = new Font("Sans Serif", Font.BOLD, 10);
     public Thread t; //allows this class to have a method for it to run like the main method
     private float xWorld; //players x position
     private float yWorld; //players y position
 
     public static boolean notHome; // checks if the player is stil playing the game
     public static boolean paused = false;
-
+ 
     public float screenX = StartScreen.SCREEN_LENGTH / 2; //where to draw the players on the screen
     public float screenY = StartScreen.SCREEN_WIDTH / 2;
-    private Keys k = new Keys();
-    private Player p = new Player(k);
+    private Keys k = new Keys(); // Checks for key inputs
+    private Player p = new Player(k); // The class that hndls everything that the player does
 
-    private Manager tm = new Manager(8, p);
+    private Manager tm = new Manager(8, p); //This class handles the npcs, vechile. Background and tile drawing system of the game
 
     public Game() {
-
-        p.addTileManager(tm);
-        notHome = true;
-        t = new Thread(this);
+        p.addManager(tm); //adds the manager class to the player class which uses the maps from the class
+        notHome = true; // checks if the player is on the home screen on not
+        t = new Thread(this); //Starts a new thread which rubs simultaniously to the main method thread 
 
         this.setLayout(null);
         this.setDoubleBuffered(true); //allows for the computer to draw the next image while the current image is being displayed
@@ -35,28 +35,28 @@ class Game extends JPanel implements Runnable {//implements runnable allows the 
     }
 
     public void startThread() {
-        t.start();
+        t.start(); //starts the rthread which starts th run mehod
     }
 
     public static void setNotHome(boolean notHome) {
-        Game.notHome = notHome;
+        Game.notHome = notHome; 
     }
 
     @Override
-    public void run() {
-        long drawInterval = 1000 / 70;
+    public void run() { // handles the game loop of the game, runs his simultaniously with the main mehtod
+        long drawInterval = 1000 / 70;//how long in milliseconds the omputer mut wait for the next draw
         while (notHome) {
-            if (paused == false) {
+            if (paused == false) {  //if the player has not paused, the game listens for key inputs if it isnt iust top listening
                 this.setFocusable(true);
                 this.requestFocus();
             }else{
                 this.setFocusable(false);
             }
 
-            update();
-            repaint();
+            update();//edits the x and y position of the plaer
+            repaint();//paints the background, objects player and npcs on the screen
             try {
-                t.sleep(drawInterval);//pauses the thread for 1/70 of a second, (might be bad)
+                Thread.sleep(drawInterval);//pauses the thread for 1/70 of a second
             } catch (InterruptedException ex) {
                 Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex); // IDE Generated
             }
@@ -72,6 +72,7 @@ class Game extends JPanel implements Runnable {//implements runnable allows the 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.setFont(f);
         Graphics2D g2 = (Graphics2D) g;
         //checks if the player is near the edges of the map or not if the player is near the edge the position on the screen changes and the map stops moving
         if (tm.MAPNUM != 4) {
@@ -136,8 +137,8 @@ class Game extends JPanel implements Runnable {//implements runnable allows the 
                 }
             }
         }
-        if (p.getObj()[0] != null) {
-            g2.drawImage(p.getObj()[0].getBi(), StartScreen.SCREEN_LENGTH, 0, 48, 48, null);
+        if (p.getObj().size() != 0) {
+            g2.drawImage(p.getObj().get(0).getBi(), StartScreen.SCREEN_LENGTH, 0, 48, 48, null);
         }
 
         g2.drawString("X: " + xWorld + " Y: " + yWorld, 25, 25);

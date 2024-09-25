@@ -7,8 +7,8 @@ class Vechile extends NPC {
         super(img, x, y, p, mapNum, tnpm);
     }
 
-    @Override
-    public void interCheck() {
+
+    public void enterCheck() {
         if (xPos > p.xPos - 150 && xPos < p.xPos + 150 && mapNum == tpm.getMapNum()) {
             if (p.getK().isInteract()) {
                 tpm.setMapNum(4);
@@ -17,4 +17,4 @@ class Vechile extends NPC {
             }
         }
     }
-}
+} 

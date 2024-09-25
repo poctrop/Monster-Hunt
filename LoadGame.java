@@ -7,6 +7,6 @@ class LoadGame extends NewGame{
         this.setBackground(Color.cyan);
     }
     
+     
     
-    
-}
+} 

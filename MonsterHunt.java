@@ -9,10 +9,10 @@ public class MonsterHunt {
     public static JFrame window = new JFrame(); // acts as the window (all panels are shown from here) 
     public static CardLayout cl = new CardLayout(); //managers each of the panels of the game
     public static JPanel control = new JPanel(); // A panel conataining all other panels (the card layout class can switch between them) 
-    public static String WORK_DIR;
+    public static String WORK_DIR; 
 
     public MonsterHunt(JPanel p, JFrame window) {
-        WORK_DIR = System.getProperty("user.dir");
+        WORK_DIR = System.getProperty("user.dir");//The working directory of the user
         control.setPreferredSize(new Dimension(768, 576));
         window.add(control);
         window.pack();
@@ -26,7 +26,7 @@ public class MonsterHunt {
 				
         ImageIcon icon = new ImageIcon(WORK_DIR + "\\icon.png"); //icon for the game
         window.setIconImage(icon.getImage());
-        window.setResizable(false);
+        window.setResizable(false); 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setTitle("Monster Hunt");
 

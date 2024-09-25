@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -11,7 +10,7 @@ class NewGame extends JPanel implements ActionListener {
     public JButton save2 = new JButton();
     public JButton back = new JButton();
     private boolean started = false;
-
+ 
     private Game g;
 
     private MonsterHunt mh;
@@ -29,7 +28,7 @@ class NewGame extends JPanel implements ActionListener {
         back.setText("back");
         back.setBounds(0, 0, 70, 25);
         back.addActionListener(this);
-
+ 
         this.setLayout(null);
         this.setDoubleBuffered(true);
         this.setBackground(Color.green);

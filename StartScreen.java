@@ -2,11 +2,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import javax.swing.*;
 
 class StartScreen extends JPanel implements ActionListener {
-
+ 
     public final static int SCREEN_LENGTH = 720;
     public final static int SCREEN_WIDTH = 540;
     private MonsterHunt mh;
@@ -26,10 +25,10 @@ class StartScreen extends JPanel implements ActionListener {
         buttonLoad.setText("Load Game");
         buttonLoad.setBounds(SCREEN_LENGTH / 2 - 100, SCREEN_WIDTH / 2 + 100, 200, 50);
         buttonLoad.addActionListener(this);
-
+ 
         this.setLayout(null);
         this.setDoubleBuffered(true);
-        this.setBackground(Color.black);
+        this.setBackground(Color.black); 
         this.add(buttonstart);
         this.add(buttonLoad);
 
@@ -45,13 +44,11 @@ class StartScreen extends JPanel implements ActionListener {
         if (e.getSource() == buttonstart) {
             System.out.println("yo");
             this.setFocusable(false);
-            NewGame ng = new NewGame(mh);
             mh.cl.show(mh.control, "2");
         }
         if (e.getSource() == buttonLoad) {
             System.out.println("yo");
             this.setFocusable(false);
-            LoadGame lg = new LoadGame(mh);
             mh.cl.show(mh.control, "3");
         }
 

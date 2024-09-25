@@ -10,12 +10,14 @@ class Object {
     private int x;
     private int y;
     private int mapNum = 1;
+    private String name;
     
     private Player p;
     
     public Object(String name, Player p) {
         inInventory = true;
-        try {
+        this.name = name;
+        try { 
             FileInputStream fis = new FileInputStream(MonsterHunt.WORK_DIR + "/Objects/" + name + ".png");
             bi = ImageIO.read(fis);
         } catch (IOException e) {
@@ -24,10 +26,11 @@ class Object {
     }
     
     public Object(String name, int x, int y, int mapNum, Player p) {
+        this.name = name;
         this.p = p;
         this.mapNum = mapNum;
         inInventory = false;
-        this.x = x;
+        this.x = x; 
         this.y = y;
         try {
             FileInputStream fis = new FileInputStream(MonsterHunt.WORK_DIR + "/Objects/" + name + ".png");
@@ -54,6 +57,10 @@ class Object {
 
     public int getMapNum() {
         return mapNum;
+    }
+
+    public String getName(){
+        return name;
     }
     
     

@@ -21,7 +21,7 @@ class PauseScreen extends JPanel {
         home.setBounds(StartScreen.SCREEN_LENGTH / 2 - 100, StartScreen.SCREEN_WIDTH / 2 + 100, 200, 50);
         home.addActionListener(a);
 
-        this.add(home);
+        this.add(home); 
         this.add(cont);
         this.setLayout(null);
         this.setPreferredSize(new Dimension(568, 376));
@@ -29,6 +29,6 @@ class PauseScreen extends JPanel {
         this.setOpaque(false);
 
     }
-    
+     
 
 }

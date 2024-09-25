@@ -1,7 +1,5 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 class Keys implements KeyListener {//listens for input from the keyboard
 
@@ -15,7 +13,7 @@ class Keys implements KeyListener {//listens for input from the keyboard
     public int getTimes() {
         return times;
     }
-
+ 
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
@@ -25,7 +23,7 @@ class Keys implements KeyListener {//listens for input from the keyboard
             upP = true;
         }
         if (keyCode == KeyEvent.VK_LEFT) {
-       
+        
             leftP = true;
         }
         if (keyCode == KeyEvent.VK_RIGHT) {
