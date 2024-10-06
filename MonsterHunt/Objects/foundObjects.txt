@@ -1,0 +1,4 @@
+s,lens,0
+s,keys,1,1
+f,cane,0
+s,carKeys,1,5

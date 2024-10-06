@@ -1,0 +1,8 @@
+1 - grass
+2 - pavement
+3 - mid tree
+4 - leaf floor
+5 - road
+6 - bot tree
+7  - long grass
+8 - top tree
